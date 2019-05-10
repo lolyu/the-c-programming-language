@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
             printf("#");
         printf(" %d\n", freq[i]);
     }
+    
     printf("\nVertical histogram:\n\n");
     for (count = max_count; count > 0; --count) {
         printf("  %2d |  ", count);
