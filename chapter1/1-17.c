@@ -8,10 +8,9 @@ int getline(char line[], int maxline);
 int main(int argc, char* argv[]) {
 	int len;
 	char line[MAXLINE];
-	while ((len = getline(line, MAXLINE)) > 0) {
+	while ((len = getline(line, MAXLINE)) > 0)
 		if (len > 80)
 			printf("\n%s\n", line);
-	}	
 	return 0;
 }
 
