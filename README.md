@@ -1,2 +1,2 @@
 # the-c-programming-language
-solutions
+solutions: https://clc-wiki.net/wiki/K%26R2_solutions
