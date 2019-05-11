@@ -34,7 +34,7 @@ int getline(char s[], int lim) {
 	s[i] = 0;
 	// continue reading till EOF
 	if (i == lim - 1)
-		for (; (c = getchar()) != EOF; ++i);
+		for (; (c = getchar()) != EOF && c != '\n'; ++i);
 	return i;
 }
 
