@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 
-#define MAXLINE 1001
 #define TABSIZE 5
 #define TAB		'\t'
 #define SPACE	' '
+
 
 int main(int argc, char* argv[]) {
 	int i;
