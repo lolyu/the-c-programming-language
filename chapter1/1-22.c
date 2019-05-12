@@ -24,18 +24,18 @@ int main(int argc, char* argv[]) {
 		for (last_blank = last_fold = i = j = 0; i < len; ++i) {
 			if (line[i] == SPACE) {
 				if (state == IN) {
-					state == OUT;
+					state = OUT;
 					last_blank = i;
 				}
 			}
 			else {
 				state = IN;
-			}
-			if (i - last_fold + 1 > TEXTWIDTH && last_blank > last_fold) {
-				for (k = 0; k < last_blank - last_fold; ++k)
-					folded[j++] = line[last_fold + k];
-				folded[j++] = '\n';
-				for (last_fold = last_blank; last_fold < len && line[last_fold] == SPACE; ++last_fold);
+				if (i - last_fold + 1 > TEXTWIDTH && last_blank > last_fold) {
+					for (k = 0; k < last_blank - last_fold; ++k)
+						folded[j++] = line[last_fold + k];
+					folded[j++] = '\n';
+					for (last_fold = last_blank; last_fold < len && line[last_fold] == SPACE; ++last_fold);
+				}
 			}
 		}
 		for (i = last_fold; i < len; folded[j++] = line[i++]);
