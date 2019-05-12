@@ -26,7 +26,8 @@ int getline(char buf[], int len) {
 	char c;
 	for (; i < len && (c = getchar()) != EOF && c != '\n'; buf[i++] = c);
 	if (c == '\n')
-		buf[i++] = 0;
+		buf[i++] = c;
+	buf[i] = 0;
 	if (i == len - 1)
 		for (; (c = getchar()) != EOF && c != '\n'; ++i);
 	return i;
