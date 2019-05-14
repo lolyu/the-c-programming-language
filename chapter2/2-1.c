@@ -3,7 +3,7 @@
 #include <float.h>
 
 
-int main(int argc, char *argv) {
+int main(int argc, char *argv[]) {
     printf("signed char min: %d\n", SCHAR_MIN);
     printf("signed char max: %d\n", SCHAR_MAX);
     printf("unsigned char max: %d\n", UCHAR_MAX);
