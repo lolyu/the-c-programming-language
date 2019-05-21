@@ -27,3 +27,6 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ```
+
+## references
+https://stackoverflow.com/questions/10079089/implicit-int-return-value-of-c-function
