@@ -39,7 +39,7 @@ int _getline(char line[], int max) {
 int strindex(char source[], char searchfor[]) {
     int i, j, k;
     for (i = 0; source[i]; ++i) {
-        for (j = 0, k = i; source[k] == searchfor[j]; ++k, ++j);
+        for (j = 0, k = i; searchfor[j] && source[k] == searchfor[j]; ++k, ++j);
         if (j > 0 && searchfor[j] == '\0')
             return i;
     }
