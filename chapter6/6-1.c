@@ -29,20 +29,22 @@ struct key {
 #define NKEYS (sizeof keytab / sizeof keytab[0])
 
 int getword(char *, int);
-int binsearch(char *, struct key *, int);
+struct key *binsearch(char *, struct key *, int);
 
 int main(void) {
-    int n;
+    struct key *pos;
     char word[MAXWORD];
 
     while (getword(word, MAXWORD) != EOF) {
+        printf("%s\n", word);
         if (isalpha(word[0]))
-            if ((n = binsearch(word, keytab, NKEYS)) >= 0)
-                keytab[n].count++;
+            if ((pos = binsearch(word, keytab, NKEYS)))
+                pos->count++;
     }
-    for (n = 0; n < NKEYS; ++n)
-        if (keytab[n].count > 0)
-            printf("%4d %s\n", keytab[n].count, keytab[n].word);
+    printf("HERE\n");
+    for (pos = keytab; pos < keytab + NKEYS; ++pos)
+        if (pos->count > 0)
+            printf("%4d %s\n", pos->count, pos->word);
     return 0;
 }
 
@@ -58,14 +60,14 @@ int getword(char *word, int limit) {
             n = getchar();
             if (n == '/')
                 while ((n = getchar()) != '\n');
+            else if (n == '*') {
+                while (c != '*' || n != '/') {
+                    c = n;
+                    n = getchar();
+                }
+            }
             else
                 ungetc(n, stdin);
-        }
-        else if (c == '/' && (n = getchar()) == '*') {
-            while (c == '*' && n == '/') {
-                c = n;
-                n = getchar();
-            }
         }
         else if (c == '#')
             while ((n = getchar()) != '\n');
@@ -82,18 +84,19 @@ int getword(char *word, int limit) {
     return word[0];
 }
 
-int binsearch(char *word, struct key tab[], int n) {
+struct key *binsearch(char *word, struct key tab[], int n) {
     int cond;
-    int left, right, mid;
-    left = 0, right = n - 1;
-    while (left <= right) {
-        mid = (left + right) / 2;
-        if ((cond = strcmp(word, tab[mid].word)) < 0)
-            right = mid - 1;
+    struct key *left = tab;
+    struct key *right = tab + n;
+    struct key *mid;
+    while (left < right) {
+        mid = left + (right - left) / 2;
+        if ((cond = strcmp(word, mid->word)) < 0)
+            right = mid;
         else if (cond > 0)
             left = mid + 1;
         else
             return mid;
     }
-    return -1;
+    return NULL;
 }
