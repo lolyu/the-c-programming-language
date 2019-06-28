@@ -18,3 +18,10 @@ struct point p5; p5 = (struct point) {.x = 101, .y = 101};
 * `*p->str++` increments `str` after accessing whatever `str` points to.
 * `(*p->str)++` is same as `*p->str++`.
 * `*p++->str` increments `p` after accessing whatever `str` points to.
+
+## sizeof
+* When `sizeof`'s operand is a type, it has to be enclosed in parentheses. But when `sizeof`'s operand is a variable, this is not required.
+  * `sizeof(type)`
+  * `sizeof variable`
+## references
+https://stackoverflow.com/questions/26652791/sizeof-vs-sizeof-in-standard-c
