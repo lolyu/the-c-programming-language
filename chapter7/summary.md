@@ -43,7 +43,8 @@ int main(void) {
 ```
 
 #### width field
-dynamic width field
+* dynamic width field
+	* a width or precision may be specified as `*`, in which case the value is computed by converting the next argument(which must be an `int`).
 ```c
 #include <stdio.h>
 
@@ -56,3 +57,26 @@ int main(void) {
 #### precision field
 * for string type, it limits the number of characters that should be output.
 * for floating point types, it specifies the digits' count after decimal point.
+
+## variadic function
+```
+#include <stdio.h>
+#include <stdarg.h>
+
+void simple_variadic(int a, ...);
+
+int main(void) {
+	simple_variadic(0, 1, 2, 3, 4, 5,  6);
+	return 0;
+}
+
+void simple_variadic(int a, ...) {
+	va_list args;						
+	va_start(args, a);
+	printf("GOT %d\n", a);
+	printf("GOT %d\n", va_arg(args, int));
+	printf("GOT %d\n", va_arg(args, int));
+	printf("GOT %d\n", va_arg(args, int));
+	va_end(args);
+}
+```
