@@ -80,3 +80,11 @@ void simple_variadic(int a, ...) {
 	va_end(args);
 }
 ```
+
+## scanf
+* whitespace character
+	* `scanf` will read and ignore any whitespace characters before next non-whitespace character.
+
+
+## references
+http://www.cplusplus.com/reference/cstdio/scanf/
