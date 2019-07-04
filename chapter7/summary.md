@@ -84,7 +84,9 @@ void simple_variadic(int a, ...) {
 ## scanf
 * whitespace character
 	* `scanf` will read and ignore any whitespace characters before next non-whitespace character.
-
-
+* non-whitespace character
+	* `scanf` read next character from stream, compares it to the non-whitespace character in the format string.
+		* if it matches, the function continues and discard this character.
+		* if it fails, `scanf` returns and leaves subsequent characters of the stream unread.
 ## references
 http://www.cplusplus.com/reference/cstdio/scanf/
