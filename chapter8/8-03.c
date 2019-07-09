@@ -131,7 +131,7 @@ int _fflush(_FILE *fp) {
                 ret = EOF;
     } else {
         if (fp->flag._WRITE == 0)
-            return -1;
+            return EOF;
         _flushbuf(EOF, fp);
         if (fp->flag._ERR)
             ret = EOF;
