@@ -138,7 +138,7 @@ int _fflush(_FILE *fp) {
     ret = 0;
     if (fp == NULL) {
         for (i = 0; i < OPEN_MAX; ++i)
-            if (_iob[i].flag._WRITE == 1 && fflush(&_iob[i]) == EOF)
+            if (_iob[i].flag._WRITE == 1 && _fflush(&_iob[i]) == EOF)
                 ret = EOF;
     } else {
         if (fp->flag._WRITE == 0)
